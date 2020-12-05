@@ -1,4 +1,4 @@
-""" Модуль для отримання даних про рух основних засобів та вивід їх на екран
+""" Модуль для отримання динаміки оборотних коштів та оборотного капіталу підприємства
 """
 
 def get_balance():
@@ -10,12 +10,12 @@ def get_balance():
     with open('./data/balance.txt', encoding="utf8") as balance_file:
         balance_list = balance_file.readlines()
 
-    # Накопичувач руху основних засобів
+    # Накопичувач балансу
     balance_drive = []
 
     for line in balance_list:
         line_list = line.split(';')
-        line_list[6] = line_list[6][:-1]  # Видаляє '\n' в кінці
+        line_list[6] = line_list[6][:-1]
         balance_drive.append(line_list)
 
 
@@ -45,8 +45,8 @@ def show_balances(balances):
         print("По Вашому запиту балансу нічого не знайдено.")
 
 
-balances = get_balance()
-show_balances(balances)
+# balances = get_balance()
+# show_balances(balances)
 
 def get_dovidnik():
     """ Повертає вміст файла "dovidniks.txt" у вигляді списка
@@ -57,7 +57,7 @@ def get_dovidnik():
     with open('./data/dovidnik.txt', encoding="utf8") as dovidnik_file:
         dovidnik_list = dovidnik_file.readlines()
 
-    # Накопичувач довідника основних засобів
+    # Накопичувач довідника балансу
     dovidnik_drive = []
 
     for line in dovidnik_list:
@@ -72,7 +72,7 @@ def get_dovidnik():
 def show_dovidniks(dovidniks):
     """ Виводить список довідника
     Args:
-        dovidniks (list): список товара
+        dovidniks (list): список балансу
     """
 
     # Задати інтервал виводу
@@ -92,5 +92,5 @@ def show_dovidniks(dovidniks):
         print("По Вашому запиту довідника нічого не знайдено.")
 
 
-dovidniks = get_dovidnik()
-show_dovidniks(dovidniks)
+# dovidniks = get_dovidnik()
+# show_dovidniks(dovidniks)
